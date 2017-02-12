@@ -1,0 +1,48 @@
+﻿@model List<PracticaTaller.Models.AccesoDatos.Venta>
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Total:</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Venta in Model)
+        {
+            <tr class="registro-venta">
+                <td class="id-venta">@Venta.idVenta</td>
+                <td>@Venta.Fecha</td>
+                <td>@Venta.DetalleVenta.Sum(x => x.Precio)
+                </td>  
+                <td></td>               
+            </tr>
+          
+        }
+    </tbody>
+      
+</table>
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Venta in Model)
+        {
+            foreach (var detalle in Venta.DetalleVenta)
+            {
+                <tr class="registro-detalle" style="display:none">
+                    <td class="id-venta"style="display:none">@detalle.idVenta</td>
+                    <td>@detalle.Producto.nombre</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/ScriptVenta.js"></script>
