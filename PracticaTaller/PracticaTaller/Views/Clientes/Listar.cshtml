@@ -3,20 +3,20 @@
 <table class="table-bordered">
     <thead>
         <tr>
-            <th>Apellido</th>
-            <th>Nombre</th>
-            <th>DNI:</th>
-            <th></th>
-            <th></th>
+            <th>APELLIDO:</th>
+            <th>NOMBRE:</th>
+            
+            
         </tr>
     </thead>
     <tbody>
         @foreach (var cliente in Model)
         {
             <tr>
-                <td>@cliente.Apellido</td>
+                <td><strong>@cliente.Apellido</strong></td>
                 <td>@cliente.Nombre</td>
                 <td>@cliente.nro_dni</td>
+                
                 <td>
                     @Html.ActionLink("Eliminar", "Eliminar", new { id = @cliente.idCliente })
                 </td>
